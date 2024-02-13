@@ -120,15 +120,15 @@ class HBNBCommand(cmd.Cmd):
         objdict = storage.all()
         if len(argl) == 0:
             print("** class name missing **")
-OAOA        elif argl[0] not in HBNBCommand.__classes:
+        elif argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         elif len(argl) == 1:
             print("** instance id missing **")
-OAOAOA        elif "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
+        elif "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
             print("** no instance found **")
         else:
             del objdict["{}.{}".format(argl[0], argl[1])]
-OAOAOA            storage.save()
+            storage.save()
 
     def do_all(self, arg):
         """Usage: all or all <class> or <class>.all()
@@ -143,17 +143,17 @@ class HBNBCommand(cmd.Cmd):
                 if len(argl) > 0 and argl[0] == obj.__class__.__name__:
                     objl.append(obj.__str__())
                 elif len(argl) == 0:
-OAOAOA                    objl.append(obj.__str__())
+                    objl.append(obj.__str__())
             print(objl)
 
     def do_count(self, arg):
-OAOAOA        """Usage: count <class> or <class>.count()
+        """Usage: count <class> or <class>.count()
         Retrieve the number of instances of a given class."""
         argl = parse(arg)
         count = 0
-OAOAOA        for obj in storage.all().values():
+        for obj in storage.all().values():
             if argl[0] == obj.__class__.__name__:
-OAOAOA                count += 1
+                count += 1
         print(count)
 
     def do_update(self, arg):
@@ -163,13 +163,13 @@ class HBNBCommand(cmd.Cmd):
         Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
         argl = parse(arg)
-OAOAOA        objdict = storage.all()
+        objdict = storage.all()
 
         if len(argl) == 0:
-OAOAOA            print("** class name missing **")
+            print("** class name missing **")
             return False
-OAOAOA        if argl[0] not in HBNBCommand.__classes:
-OAOAOA            print("** class doesn't exist **")
+        if argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
             return False
         if len(argl) == 1:
             print("** instance id missing **")
@@ -178,10 +178,10 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return False
         if len(argl) == 2:
-OAOAOA            print("** attribute name missing **")
-OAOAOA            return False
+            print("** attribute name missing **")
+            return False
         if len(argl) == 3:
-OAOAOAOAOAOA            try:
+            try:
                 type(eval(argl[2])) != dict
             except NameError:
                 print("** value missing **")
